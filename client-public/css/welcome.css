@@ -433,3 +433,75 @@ body {
         font-size: 14px;
     }
 }
+
+/* ---- Тёмная тема ---- */
+[data-theme="dark"] body {
+    background: #0f172a;
+    background-image: none;
+}
+
+[data-theme="dark"] .circle {
+    background: rgba(96, 165, 250, 0.07) !important;
+}
+
+[data-theme="dark"] .card {
+    background: rgba(30, 41, 59, 0.98);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .title {
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .subtitle {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .search-input {
+    background: rgba(15, 23, 42, 0.8);
+    color: #f1f5f9;
+    border-color: #334155;
+}
+
+[data-theme="dark"] .search-input::placeholder {
+    color: #475569;
+}
+
+[data-theme="dark"] .search-input:focus {
+    background: #0f172a;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15);
+}
+
+[data-theme="dark"] .search-button {
+    color: #64748b;
+}
+
+[data-theme="dark"] .search-button:hover {
+    background: rgba(96, 165, 250, 0.12);
+}
+
+[data-theme="dark"] .suggestions-list {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .suggestion-item {
+    color: #e2e8f0;
+    border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .suggestion-item:hover {
+    background: rgba(96, 165, 250, 0.1);
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .back-button {
+    color: #64748b;
+}
+
+[data-theme="dark"] .back-button:hover {
+    background: rgba(96, 165, 250, 0.08);
+    color: #e2e8f0;
+}

@@ -41,6 +41,9 @@ export default function SchedulePage() {
     const [currentView, setCurrentView] = useState('day');
     const [isBurgerOpen, setIsBurgerOpen] = useState(false);
     const [activeMobileTab, setActiveMobileTab] = useState('');
+    const [isDraggingGrid, setIsDraggingGrid] = useState(false);
+    const dragStartXRef = useRef(0);
+    const dragScrollLeftRef = useRef(0);
 
     useEffect(() => {
         const selection = getSavedSelection();
@@ -451,7 +454,7 @@ export default function SchedulePage() {
             </div>
 
             <main
-                className="schedule-grid"
+                className={`schedule-grid${isDraggingGrid ? ' is-dragging' : ''}`}
                 id="desktopSchedule"
                 ref={scheduleGridRef}
                 style={isMobileView && currentView === 'day' ? { display: 'none' } : undefined}
@@ -461,6 +464,21 @@ export default function SchedulePage() {
                         event.currentTarget.scrollLeft += event.deltaY;
                     }
                 }}
+                onMouseDown={(event) => {
+                    if (isMobileView) return;
+                    setIsDraggingGrid(true);
+                    document.body.style.userSelect = 'none';
+                    dragStartXRef.current = event.pageX - scheduleGridRef.current.offsetLeft;
+                    dragScrollLeftRef.current = scheduleGridRef.current.scrollLeft;
+                }}
+                onMouseMove={(event) => {
+                    if (!isDraggingGrid || isMobileView) return;
+                    event.preventDefault();
+                    const x = event.pageX - scheduleGridRef.current.offsetLeft;
+                    scheduleGridRef.current.scrollLeft = dragScrollLeftRef.current - (x - dragStartXRef.current);
+                }}
+                onMouseUp={() => { setIsDraggingGrid(false); document.body.style.userSelect = ''; }}
+                onMouseLeave={() => { setIsDraggingGrid(false); document.body.style.userSelect = ''; }}
             >
                 {isLoading && (
                     <div className="schedule-loading">

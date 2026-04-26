@@ -3,18 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="КАИ">
+    <link rel="apple-touch-icon" href="/assets/logo.png">
+    <meta name="theme-color" content="#E8F4F8" id="meta-theme-color">
+
+    <!-- Шрифт Inter — грузим сразу, не ждём React -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- Preload CSS -->
     <link rel="preload" href="/css/welcome.css" as="style">
     <link rel="preload" href="/css/schedule.css" as="style">
     <link rel="preload" href="/css/schedule-mobile.css" as="style">
     <link rel="preload" href="/css/admin-login.css" as="style">
     <link rel="preload" href="/css/admin-dashboard.css" as="style">
+
     <link rel="icon" type="image/png" href="/assets/logo.png">
-    <title>ANTI_VUZ</title>
-    <meta name="description" content="Расписание занятий для студентов. Выберите университет, группу и подгруппу.">
+    <title>КАИ Расписание</title>
+    <meta name="description" content="Расписание занятий для студентов КНИТУ-КАИ. Выберите университет, группу и подгруппу.">
+
+    <!-- Применяем сохранённую тему до рендера React, чтобы не было вспышки -->
+    <script src="/theme-init.js"></script>
+
+    <style>
+        #splash {
+            position: fixed;
+            inset: 0;
+            background: #E8F4F8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.45s ease;
+        }
+        [data-theme="dark"] #splash {
+            background: #0f172a;
+        }
+        #splash.splash-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #splash-logo {
+            width: 180px;
+            height: auto;
+            animation: splash-pulse 1.8s ease-in-out infinite;
+            filter: drop-shadow(0 4px 16px rgba(124, 185, 232, 0.35));
+        }
+        [data-theme="dark"] #splash-logo {
+            filter: drop-shadow(0 4px 16px rgba(96, 165, 250, 0.4));
+        }
+        @keyframes splash-pulse {
+            0%, 100% { transform: scale(1); }
+            50%       { transform: scale(1.09); }
+        }
+    </style>
 </head>
 <body>
+    <div id="splash">
+        <img id="splash-logo" src="/assets/logo.png" alt="КАИ" />
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 </body>
