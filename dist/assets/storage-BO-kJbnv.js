@@ -1,0 +1,1 @@
+var e=`anti_vuz_selection`;function t(){try{let t=localStorage.getItem(e);return t?JSON.parse(t):null}catch{return null}}function n(t){localStorage.setItem(e,JSON.stringify(t))}function r(){localStorage.removeItem(e)}export{t as n,n as r,r as t};

@@ -1,0 +1,26 @@
+{
+  "name": "КАИ Расписание",
+  "short_name": "КАИ",
+  "description": "Расписание занятий студентов КНИТУ-КАИ",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#E8F4F8",
+  "theme_color": "#7CB9E8",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "/assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

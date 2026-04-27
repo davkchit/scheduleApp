@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(node -e ' *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(cat vite.config.js)",
+      "Bash(cat vite.config.ts)"
     ]
   }
 }
